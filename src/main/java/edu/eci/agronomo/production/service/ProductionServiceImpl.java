@@ -12,29 +12,32 @@ import java.util.Optional;
 @Service
 public class ProductionServiceImpl implements ProductionService {
 
+    @Autowired
+    ProductionRepositoryImpl productionRepository;
+
 
     @Override
     public ArrayList<Production> findAll() {
-        return null;
+        return productionRepository.findAll();
     }
 
     @Override
     public Optional<Production> findById(String id) {
-        return Optional.empty();
+        return productionRepository.findById(id);
     }
 
     @Override
     public Production save(ProductionDto productionDto) {
-        return null;
+        return productionRepository.save(productionDto);
     }
 
     @Override
     public void delete(String id) {
-
+        productionRepository.delete(id);
     }
 
     @Override
     public Production update(String id, ProductionDto productionDto) {
-        return null;
+        return productionRepository.update(id, productionDto);
     }
 }
