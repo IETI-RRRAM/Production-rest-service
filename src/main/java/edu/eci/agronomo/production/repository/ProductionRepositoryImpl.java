@@ -48,10 +48,9 @@ public class ProductionRepositoryImpl implements ProductionRepository {
     public Production update(String id, ProductionDto productionDto) {
         Query query = new Query(Criteria.where("id").is(id));
         Update update = new Update()
-                .set("idRanch", productionDto.getIdRanch())
-                .set("name", productionDto.getName())
-                .set("type", productionDto.getType())
-                .set("gender", productionDto.getGender());
+                .set("idAnimal", productionDto.getIdAnimal())
+                .set("productions", productionDto.getProductions())
+                .set("totalProduction", productionDto.getTotalProduction());
         mongoTemplate.updateFirst(query, update, Production.class);
         return findById(id).orElse(null);
     }

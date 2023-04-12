@@ -1,91 +1,47 @@
 package edu.eci.agronomo.production.model.production;
 
-public class ProductionDto {
-    private String idRanch;
-    private String name;
-    private String type;
-    private String gender;
-    private String age;
-    private String stage;
-    private String weight;
-    private String race;
+import edu.eci.agronomo.production.model.prod.Prod;
 
-    public ProductionDto(String idRanch, String name, String type, String gender, String age, String stage, String weight, String race) {
-        this.idRanch = idRanch;
-        this.name = name;
-        this.type = type;
-        this.gender = gender;
-        this.age = age;
-        this.stage = stage;
-        this.weight = weight;
-        this.race = race;
+import java.util.List;
+
+public class ProductionDto {
+    private String idAnimal;
+    private List<Prod> productions;
+    private float totalProduction;
+
+    public ProductionDto(String idAnimal, List<Prod> productions) {
+        this.idAnimal = idAnimal;
+        this.productions = productions;
+        this.totalProduction = getTotalProduction();
     }
 
     public ProductionDto() {
 
     }
 
-    public String getIdRanch() {
-        return idRanch;
+    public String getIdAnimal() {
+        return idAnimal;
     }
 
-    public void setIdRanch(String idRanch) {
-        this.idRanch = idRanch;
+    public void setIdAnimal(String idAnimal) {
+        this.idAnimal = idAnimal;
     }
 
-    public String getName() {
-        return name;
+    public List<Prod> getProductions() {
+        return productions;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductions(List<Prod> productions) {
+        this.productions = productions;
     }
 
-    public String getType() {
-        return type;
+    public float getTotalProduction() {
+        totalProduction = 0;
+        productions.forEach(prod -> {totalProduction+= prod.getQuantity();});
+        return totalProduction;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getStage() {
-        return stage;
-    }
-
-    public void setStage(String stage) {
-        this.stage = stage;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
-    }
-
-    public String getRace() {
-        return race;
-    }
-
-    public void setRace(String race) {
-        this.race = race;
+    public void setTotalProduction(float totalProduction) {
+        this.totalProduction = totalProduction;
     }
 }
