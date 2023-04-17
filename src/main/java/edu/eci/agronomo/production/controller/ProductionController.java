@@ -37,6 +37,17 @@ public class ProductionController {
         }
     }
 
+    // Get production by ID Animal
+    @GetMapping("/animal/{id}")
+    public ResponseEntity<Production> getProductionByIdAnimal(@PathVariable String id) {
+        Optional<Production> production = productionService.findByIdAnimal(id);
+        if (production.isPresent()) {
+            return ResponseEntity.ok(production.get());
+        } else {
+            throw new ProductionNotFoundException(id);
+        }
+    }
+
     // Create a new production
     @PostMapping
     public ResponseEntity<Production> createProduction(@RequestBody ProductionDto productionDto) {

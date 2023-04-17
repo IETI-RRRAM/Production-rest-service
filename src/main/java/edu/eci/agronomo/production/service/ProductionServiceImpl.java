@@ -27,6 +27,11 @@ public class ProductionServiceImpl implements ProductionService {
     }
 
     @Override
+    public Optional<Production> findByIdAnimal(String id) {
+        return productionRepository.findByIdAnimal(id);
+    }
+
+    @Override
     public Production save(ProductionDto productionDto) {
         return productionRepository.save(productionDto);
     }

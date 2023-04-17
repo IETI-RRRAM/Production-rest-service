@@ -35,6 +35,14 @@ public class ProductionRepositoryImpl implements ProductionRepository {
     }
 
     @Override
+    public Optional<Production> findByIdAnimal(String id) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("idAnimal").is(id));
+        return Optional.ofNullable(mongoTemplate.findOne(query, Production.class));
+    }
+
+
+    @Override
     public Production save(ProductionDto productionDto) {
         return mongoTemplate.save(new Production(String.valueOf(ObjectId.get()), productionDto));
     }

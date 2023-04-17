@@ -11,6 +11,8 @@ public interface ProductionService {
 
     public Optional<Production> findById(String id);
 
+    public Optional<Production> findByIdAnimal(String id);
+
     public Production save(ProductionDto productionDto);
 
     public void delete(String id);
